@@ -120,6 +120,48 @@ We must have heared of Single Responsibility by many different statements like:
 The SRP requires that a class should have only a single responsibility.
 Each Software Module(class/function) should have only one and one reason to change.
 
-Simply said a class should have only one job and if a class has more than one responsibility, it becomes tightly coupled. A change to one responsibility might result in the modification of otherresponsibility.
+Simply said a class should have only one job and if a class has more than one responsibility, it becomes tightly coupled. A change to one responsibility might result in the modification of other responsibility.
 
-Conside a high level view of a Note Talking App, where you add your notes and then save it to the Disk.
+When designing classes, we shoild aim to put related feature together, so whenever they tend to change, it would be for same reason. And we should try to seperate feature if they will change for different reasons.
+
+Consider a high level view of a Note Talking App, where you add your notes and then save it to the Disk.
+```Python
+
+		class Notes:
+		
+			def __init__(self):
+		  
+		
+			def add_entry(self, text):
+		
+		
+			def save(self, filename):		
+		
+				file.write()
+			
+
+```
+
+The problem with thi sapproach is along with keeping the note entries this also handles the functionality of writing to the disk, now future there might be functionality to encrypt the data before writing it to the Disk or may upload it to any drive before writing it to a Drive etc.
+A better idea would be to give the responsibility of persisting the data to another module/class. Somethign like the following :
+
+```Python
+
+	class Notes:
+
+		def __init__(self):
+  
+
+		def add_entry(self, text):
+	
+
+
+	class FileSystem:
+
+
+		def save_to_file(notes, filename):
+
+		#new features like sav to drive can be added furtur
+		def save_to_drive(notes, url):
+
+```
