@@ -165,3 +165,13 @@ A better idea would be to give the responsibility of persisting the data to anot
 		def save_to_drive(notes, url):
 
 ```
+
+
+### 6. Open Closed Principle
+
+Software enitites (classes, modules etc.) should be open for extension and should be closed for Modification.
+Usually for every new requirement the most common approach is to modifiy the existing Code, which can introduce new bugs to the existing code.
+Three approaches to achieve OCP.
+1. Parameter/Argument : Pass parameter to the function and then keep a check in the function definiton and based of the parameter call relevent method/class.
+2. Inheritance/Abstract Class : Keep ans abstract class and when requiremnet comes, create a base class and override the existing function or add new function.
+3. Composition/Injection : Keep the logic in other class and keep adding new class with requirement and use them via dependency Injection.
