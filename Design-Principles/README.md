@@ -175,3 +175,10 @@ Three approaches to achieve OCP.
 1. Parameter/Argument : Pass parameter to the function and then keep a check in the function definiton and based of the parameter call relevent method/class.
 2. Inheritance/Abstract Class : Keep ans abstract class and when requiremnet comes, create a base class and override the existing function or add new function.
 3. Composition/Injection : Keep the logic in other class and keep adding new class with requirement and use them via dependency Injection.
+
+
+### 7. Liskov's Substitution Principle
+
+Liskov's Substitution Principle simple states that the Sub Classes should be albe to substitute for the Base Classes
+
+"Do your Subclasses behave like you Super Classes ?"
