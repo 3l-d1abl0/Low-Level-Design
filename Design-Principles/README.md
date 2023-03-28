@@ -182,3 +182,8 @@ Three approaches to achieve OCP.
 Liskov's Substitution Principle simple states that the Sub Classes should be albe to substitute for the Base Classes
 
 "Do your Subclasses behave like you Super Classes ?"
+
+### 8. Interface Segeregation Principle
+
+It states that we should prefer to use Small, Cohesive Interfaces than Large Interfaces.
+i.e clients should not be forced to provide the definitions of the methods which they do no use.
