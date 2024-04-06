@@ -59,7 +59,7 @@ class ServerLogger(Logger):
 if __name__ == "__main__":
 
     '''Breaks OCP
-    try:
+    try:    
         a = int(input('Enter Value for No1 : '))
         b = int(input('Enter Value for No2 : '))
         result = a / b

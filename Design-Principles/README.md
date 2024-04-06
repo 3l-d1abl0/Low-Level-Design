@@ -187,3 +187,8 @@ Liskov's Substitution Principle simple states that the Sub Classes should be alb
 
 It states that we should prefer to use Small, Cohesive Interfaces than Large Interfaces.
 i.e clients should not be forced to provide the definitions of the methods which they do no use.
+
+
+### 9. Dependecy Inversion Principle (DIP)
+
+High Level Modules should not depend on Low Level Modules. Both should depend on Abstractions and Abstractions should not depend on details but rather details should depend on abstractions.

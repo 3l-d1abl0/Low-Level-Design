@@ -1,5 +1,5 @@
 class Rectangle:
-    
+
     def __init__(self, width, height):
         self._height = height
         self._width = width
@@ -7,14 +7,17 @@ class Rectangle:
     def __str__(self):
         return f'Width: {self.width}, height: {self.height}'
 
+    #Area Getter
     @property
     def area(self):
         return self._width * self._height
 
+    #Width Getter
     @property
     def width(self):
         return self._width
 
+    #Width setter
     @width.setter
     def width(self, value):
         self._width = value
@@ -33,6 +36,7 @@ class Square(Rectangle):
     def __init__(self, size):
         super().__init__(size, size)
 
+    #Override the setter decorator in Rectangele Class
     @Rectangle.width.setter
     def width(self, value):
 
