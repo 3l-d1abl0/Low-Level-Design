@@ -2,35 +2,49 @@ from symbol import Symbol
 
 class Board:
     def __init__(self, N):
-        self.size = N
-        self.board = [[' ' for _ in range(N)] for _ in range(N)]
+        self.__size = N
+        self.__board = [[' ' for _ in range(N)] for _ in range(N)]
     
     def initialize(self):
-        for row in range(self.size):
-            for col in range(self.size):
-                self.board[row][col] = '_'
+        for row in range(self.__size):
+            for col in range(self.__size):
+                self.__board[row][col] = '_'
 
     def display_board(self):
 
-        print('= ' * self.size)
-        for row in self.board:
+        print('= ' * self.__size)
+        for row in self.__board:
             print(row)
-        print('= ' * self.size)
+        print('= ' * self.__size)
+
+    def get_size(self)-> int:
+        return self.__size
+    
+    def get_cell(self, x, y) -> str:
+
+        #Check out of Bound
+        if not (0 <= x < self.__size):
+            raise IndexError
+        
+        if not (0<= y <self.__size):
+            raise IndexError
+            
+        return self.__board[x][y]
 
     def add_move(self, x: int, y: int, symbol: Symbol) -> bool:
 
         #Check out of Bound
-        if not (0 <= x < self.size):
+        if not (0 <= x < self.__size):
             return False
         
-        if not (0<= y <self.size):
+        if not (0<= y <self.__size):
             return False
         
         #Check if not empty/occupied
-        if self.board[x][y] != '_':
+        if self.__board[x][y] != '_':
             return False
         
-        self.board[x][y] = symbol.value;
+        self.__board[x][y] = symbol.value;
 
         return True
 
