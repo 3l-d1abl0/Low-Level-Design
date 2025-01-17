@@ -1,7 +1,7 @@
-from TicTakToe import TicTakToe
+from TicTacToe import TicTacToe
 
 
 if __name__ == "__main__":
 
-    tic_tac_toe = TicTakToe()
+    tic_tac_toe = TicTacToe()
     tic_tac_toe.play()

@@ -2,7 +2,7 @@ from game import Game
 from symbol import Symbol
 from player import HumanUser
 
-class TicTakToe:
+class TicTacToe:
 
     def play(self):
 
