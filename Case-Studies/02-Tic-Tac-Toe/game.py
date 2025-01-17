@@ -36,7 +36,6 @@ class Game:
 
             current_player_cell = input(f"Move: #{self.moves} Player: {current_player.get_name()} ({current_player.get_symbol().value}) Enter: X, Y: ")
             x, y = map(int, current_player_cell.split(','))
-            print(x, y)
 
 
             symbol_added = self.board.add_move(x, y, current_player.get_symbol())
@@ -49,19 +48,22 @@ class Game:
             #valid Move
             self.moves +=1
             self.free_cells -=1
-            print('valid Move')
             
+            #Display the Board
             self.board.display_board()
 
+            #Check For Winner
             if self.check_winner(x, y, current_player):
+                no_winner = False
                 print("WINNER !!!: ", current_player.get_name())
                 return current_player
             
+            #Check for Tie
             if self.free_cells == 0:
                 print("Its a TIE !!!!!")
                 return False
             
-            #otherwise prepare for next Move
+            #Otherwise prepare for next Move
             self.players.append(current_player)
             
 
@@ -75,6 +77,8 @@ class Game:
                 row_check = False
                 break
 
+        if row_check:
+            return True
 
         #2. Column Check
         col_check = True
@@ -83,23 +87,37 @@ class Game:
             if self.board.get_cell(row,y) != current_player.get_symbol().value:
                 col_check = False
                 break
-            
-        #3. Diagonal Check (top-left to bottom right)
+
+        if col_check:
+            return True
+        
+        #3. Diagonal Check (top-left to bottom right) Only if it lies on the Diagonal
         dia_check = True
-        for rc in range(0, self.board.get_size()):
+        if x==y:
+            for rc in range(0, self.board.get_size()):
 
-            if self.board.get_cell(rc, rc) != current_player.get_symbol().value:
-                dia_check = False
-                break
+                if self.board.get_cell(rc, rc) != current_player.get_symbol().value:
+                    dia_check = False
+                    break
+        else:
+            dia_check = False
+        
+        if dia_check:
+            return True
 
-        #4. anti-dia Check  (top-right to bottom-left)
+        #4. anti-dia Check  (top-right to bottom-left) Only if it lies on the Diagonal
         anti_dia_check = True
-        row =0
-        for col in range(self.board.get_size() -1, -1, -1):
-            if self.board.get_cell(row, col) != current_player.get_symbol().value:
-                anti_dia_check = False
-                break
-            row+=1
+        if x+y == self.board.get_size()-1:
+            row =0
+            for col in range(self.board.get_size() -1, -1, -1):
+                if self.board.get_cell(row, col) != current_player.get_symbol().value:
+                    anti_dia_check = False
+                    break
+                row+=1
+        else:
+            anti_dia_check = False
 
+        if anti_dia_check:
+            return True
 
-        return row_check | col_check | dia_check | anti_dia_check
+        return False
