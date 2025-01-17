@@ -6,7 +6,7 @@ import random
 class Player(ABC):
     def __init__(self, symbol: Symbol, name: str):
         self.symbol = symbol
-        self.name = str
+        self.name = name
 
     def get_symbol(self) -> Symbol:
         return self.symbol

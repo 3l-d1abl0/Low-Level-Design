@@ -1,4 +1,4 @@
-#import game
+from game import Game
 from symbol import Symbol
 from player import HumanUser
 
@@ -16,7 +16,7 @@ class TicTakToe:
 
         '''
         #Gather Board Size
-        board_size = input("Enter the Board Size: ")
+        board_size = int(input("Enter the Board Size: "))
 
         all_symbols = {symbol.value : symbol for symbol in Symbol}
         available_symbols = set(all_symbols.keys())
@@ -30,7 +30,14 @@ class TicTakToe:
 
         print(player_one)
         print(player_two)
-        
+
+        #Set up a Game
+        tic_tac_toe_game = Game(board_size, player_one, player_two)
+        #Initialize the Game
+        tic_tac_toe_game.initialize_game()
+
+        #Play
+        tic_tac_toe_game.play()
 
 
 
