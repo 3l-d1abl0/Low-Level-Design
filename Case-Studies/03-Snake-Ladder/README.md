@@ -13,10 +13,10 @@
 
 ### Objects
 
-- Players
-- Board
-- Cells
-- Die
-- Snake
-- Ladders
+- Players ✅
+- Board 
+- Cells ✅
+- Die ✅
+- Snake ✅
+- Ladders ✅
 
