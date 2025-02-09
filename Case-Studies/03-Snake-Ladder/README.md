@@ -7,8 +7,8 @@
 - How many cells ?
 - How many Dice ? values in dice ?
 
-- How many snakes ? configurable size ?
-- How many Ladders ? configurable size ?
+- How many snakes ? configurable size ? Red /Green Snake ? One-time Snake
+- How many Ladders ? configurable size ? Red/Green Snake ? One-time Snake
 
 
 ### Objects
