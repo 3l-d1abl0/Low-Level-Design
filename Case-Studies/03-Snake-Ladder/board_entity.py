@@ -2,7 +2,7 @@ class BoardEntity:
     def __init__(self, start: int, end: int, type: str):
         self.__start = start  # Private attribute
         self.__end = end      # Private attribute
-        self.__type = None    # Private attribute, will be overridden in child classes
+        self.__type = type    # Private attribute, will be overridden in child classes
 
     # Getter for start
     @property
@@ -35,7 +35,7 @@ class BoardEntity:
         self.__type = value
 
     def __str__(self):
-        return f"{self.type.capitalize()}: Start at {self.start}, End at {self.end}"
+        return f"{self.__type.capitalize()}: Start at {self.start}, End at {self.end}"
 
 
 
@@ -44,4 +44,4 @@ class BoardEntity:
 class Ladder(BoardEntity):
     def __init__(self, start, end):
         super().__init__(start, end)
-        self.type = 'ladder'  # Override the type
+        self.__type = 'ladder'  # Override the type

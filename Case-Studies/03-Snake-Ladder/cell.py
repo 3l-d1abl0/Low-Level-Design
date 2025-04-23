@@ -22,5 +22,5 @@ class Cell:
 
     # Setter for board_entity
     @board_entity.setter
-    def set_board_entity(self, snake_or_ladder: BoardEntity):
+    def board_entity(self, snake_or_ladder: BoardEntity):
         self.__board_entity = snake_or_ladder

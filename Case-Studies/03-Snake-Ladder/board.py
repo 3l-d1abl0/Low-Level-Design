@@ -35,10 +35,9 @@ class Board:
                 cells_taken.add(start)
 
         # Place ladders on the board
-        for start, end in self.ladder_positions:
+        for start_cell, end_cell in self.ladder_positions:
             ladder = Ladder(start, end)
-            print(start, end)
-            #self.matrix[start][end].set_board_entity(ladder)
+            self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity = ladder
 
         # Fill snakes next
         while len(self.snake_positions) < self.__num_snakes:
@@ -51,19 +50,18 @@ class Board:
                 cells_taken.add(start)
 
         # Place snakes on the board
-        for start, end in self.snake_positions:
+        for start_cell, end_cell in self.snake_positions:
             snake = Snake(start, end)
-            print(start, end)
-            #self.matrix[end][end].set_board_entity(snake)
+            self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity = snake
 
 
     def display_board_info(self):
 
         print(f"{self.__dimension} x {self.__dimension} Board initalized")
         print("#####Laddders Info:#####")
-        for start, end in self.ladder_positions:
-            print(f"Ladder from {start} ---> {end}")
+        for start_cell, end_cell in self.ladder_positions:
+            print(self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity)
 
         print("#####Snakes Info:#####")
-        for start, end in self.snake_positions:
-            print(f"Snake from {start} ---> {end}")
+        for start_cell, end_cell in self.snake_positions:
+            print(self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity)
