@@ -36,8 +36,9 @@ class Board:
 
         # Place ladders on the board
         for start_cell, end_cell in self.ladder_positions:
-            ladder = Ladder(start, end)
-            self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity = ladder
+            ladder = Ladder(start_cell, end_cell)
+            start_cell-=1
+            self.matrix[start_cell//self.__dimension][start_cell%self.__dimension].board_entity = ladder
 
         # Fill snakes next
         while len(self.snake_positions) < self.__num_snakes:
@@ -51,17 +52,31 @@ class Board:
 
         # Place snakes on the board
         for start_cell, end_cell in self.snake_positions:
-            snake = Snake(start, end)
-            self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity = snake
+            snake = Snake(start_cell, end_cell)
+            start_cell-=1
+            self.matrix[start_cell//self.__dimension][start_cell%self.__dimension].board_entity = snake
 
 
     def display_board_info(self):
 
-        print(f"{self.__dimension} x {self.__dimension} Board initalized")
+        print(f"Board initalized: ({self.__dimension} x {self.__dimension})")
+        for row in range(self.__dimension):
+            for col in range(self.__dimension):
+                if self.matrix[row][col].board_entity is None:
+                    print(self.matrix[row][col].number," ",end="")
+                elif isinstance(self.matrix[row][col].board_entity, Snake): 
+                    print("S"," ", end="")
+                else:
+                    print("L"," ", end="")
+            print()
+
+
         print("#####Laddders Info:#####")
         for start_cell, end_cell in self.ladder_positions:
-            print(self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity)
+            start_cell-=1
+            print(self.matrix[start_cell//self.__dimension][start_cell%self.__dimension].board_entity)
 
         print("#####Snakes Info:#####")
         for start_cell, end_cell in self.snake_positions:
-            print(self.matrix[start_cell//self.__dimension][end_cell%self.__dimension].board_entity)
+            start_cell-=1
+            print(self.matrix[start_cell//self.__dimension][start_cell%self.__dimension].board_entity)
