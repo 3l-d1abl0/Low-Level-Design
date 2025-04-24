@@ -11,6 +11,17 @@ class Board:
         self.__num_snakes = num_snakes
         self.__num_ladders = num_ladders
 
+    @property
+    def board_dimension(self):
+        return self.__dimension
+    
+    @property
+    def board_snakes(self):
+        return self.__num_snakes
+    
+    @property
+    def board_ladders(self):
+        return self.__num_ladders
 
     def init_board(self):
         #Create Board
@@ -70,13 +81,34 @@ class Board:
                     print("L"," ", end="")
             print()
 
-
+        print("=====================")
         print("#####Laddders Info:#####")
         for start_cell, end_cell in self.ladder_positions:
             start_cell-=1
             print(self.matrix[start_cell//self.__dimension][start_cell%self.__dimension].board_entity)
 
+        print("=====================")
         print("#####Snakes Info:#####")
         for start_cell, end_cell in self.snake_positions:
             start_cell-=1
             print(self.matrix[start_cell//self.__dimension][start_cell%self.__dimension].board_entity)
+
+
+    def process_position(self, pos:int):
+        '''
+            CAUTION: this function assumes there is not loop caused by ladder+snakes
+        '''
+        #if position already crosses the winning mark
+        if pos >= self.__dimension*self.__dimension:
+            return pos
+    
+        row, col = (pos-1)//self.__dimension, (pos-1)%self.__dimension
+        if(self.matrix[row][col].board_entity is None):
+            return pos
+        else:
+            return self.process_position(self.matrix[row][col].board_entity.end)
+        
+
+    def check_winner(self, pos: int):
+
+        return True if pos >= self.__dimension*self.__dimension else False
