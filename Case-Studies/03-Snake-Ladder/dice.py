@@ -21,6 +21,10 @@ class Dice(ABC):
         def roll(self):
             pass
 
+        @property
+        def sides(self):
+            return self.__sides
+
 
 #Normal Dice inherits Dice
 class NormalDice(Dice):
@@ -113,7 +117,7 @@ class CustomDice(Dice):
 
 class DiceFactory:
     @staticmethod
-    def create_die(dice_type: DiceType, color: str, sides: int , custom_values: list[int]):
+    def create_die(dice_type: DiceType, color: str, sides: int , custom_values: list[int]=[]):
 
         if sides <= 0:
             raise ValueError("Side should be a positive Value !")
