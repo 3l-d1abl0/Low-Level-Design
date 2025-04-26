@@ -11,11 +11,18 @@ class Player:
     def get_id(self) -> str:
         return str(self.__id)
     
-    def get_name(self) -> str:
+    @property
+    def name(self) -> str:
         return self.__name
     
-    def get_current_position(self)-> int:
+    # Getter for board entity - snake or Ladder
+    @property
+    def current_position(self):
         return self.__current_position
     
-    def update_current_position(self, new_pos)-> int:
+    @current_position.setter
+    def current_position(self, new_pos):
         self.__current_position = new_pos
+
+    def __str__(self):
+        return f"Player: {self.__name}({self.__id}), Position: {self.__current_position}"
